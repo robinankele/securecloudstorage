@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SecureCloudStorage</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_file_upload">FileUploadActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_file_download">FileDownloadActivity</string>
+    <string name="title_activity_managment">ManagmentActivity</string>
+    <string name="title_activity_qccode">QCCodeActivity</string>
+
+</resources>

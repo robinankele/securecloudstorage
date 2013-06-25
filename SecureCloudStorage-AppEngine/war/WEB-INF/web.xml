@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  
+ <servlet>
+  <servlet-name>SystemServiceServlet</servlet-name>
+  <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
+  <init-param>
+   <param-name>services</param-name>
+   <param-value>com.securecloudstorage.MessageEndpoint,com.securecloudstorage.DeviceInfoEndpoint</param-value>
+  </init-param>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>SystemServiceServlet</servlet-name>
+  <url-pattern>/_ah/spi/*</url-pattern>
+ </servlet-mapping>
+ 
+ 	<servlet>
+        <servlet-name>upload</servlet-name>
+        <servlet-class>com.securecloudstorage.server.servlet.FileUploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>upload</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>download</servlet-name>
+        <servlet-class>com.securecloudstorage.server.servlet.FileDownloadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>download</servlet-name>
+        <url-pattern>/download</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>manage</servlet-name>
+        <servlet-class>com.securecloudstorage.server.servlet.FileManagerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>manage</servlet-name>
+        <url-pattern>/manage</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>info</servlet-name>
+        <servlet-class>com.securecloudstorage.server.servlet.InfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>info</servlet-name>
+        <url-pattern>/admin/info</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>filelist</servlet-name>
+        <servlet-class>com.securecloudstorage.server.servlet.FileListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>filelist</servlet-name>
+        <url-pattern>/filelist</url-pattern>
+    </servlet-mapping>
+
+	<!-- To declare that HTTPS should be used for the below URLs -->
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <!-- To declare the below URL is administrator area -->
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+</web-app>

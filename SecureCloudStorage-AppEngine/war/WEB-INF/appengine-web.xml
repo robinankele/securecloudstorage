@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+  <application>securecloudservice</application>
+  <version>1</version>
+
+  <!-- Configure java.util.logging -->
+  <system-properties>
+    <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+	<!-- Configure allowed client IPs that can upload files via Apache-HttpClient API -->
+	<property name="upload.allowed-client-ip" value="127.0.0.1, 129.27.152.126, 129.27.152.209, 129.27.152.210, 129.27.152.195, 129.27.22.161, 129.27.12.181, 192.168.0.3" />
+	<!-- Configure allowed max size of the uploaded data in bytes (e.g. 10MB) -->
+	<property name="upload.allowed-maxsize" value="10240000" />
+	<!-- Configure who (logged in 'user' or 'admin') can upload files -->
+	<property name="upload.allowed-role" value="user" />
+	</system-properties>
+	
+	<ssl-enabled>true</ssl-enabled>
+	<sessions-enabled>true</sessions-enabled>
+	<threadsafe>true</threadsafe>
+
+</appengine-web-app>
